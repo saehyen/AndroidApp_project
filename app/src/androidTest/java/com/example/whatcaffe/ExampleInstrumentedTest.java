@@ -23,5 +23,6 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.whatcaffe", appContext.getPackageName());
         // ㅇㅇ
+        System.out.println("ㅇㄴㅇㅇㄴㅇ");
     }
 }
