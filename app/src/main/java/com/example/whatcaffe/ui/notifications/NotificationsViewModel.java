@@ -13,7 +13,4 @@ public class NotificationsViewModel extends ViewModel {
         mText.setValue("This is notifications fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }
