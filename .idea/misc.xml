@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24895833333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.24895833333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.24895833333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.24895833333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/fragment_dashboard.xml" value="0.2828125" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/fragment_notifications.xml" value="0.36614583333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/layout_recycler_item.xml" value="0.23097826086956522" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/layout/recyclerview_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Beansmap/beansmap2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.10677083333333333" />
         <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/AndroidApp_project/app/src/main/res/layout/activity_main.xml" value="0.44655797101449274" />
         <entry key="..\:/Users/HUSTAR11/AndroidStudioProjects/AndroidApp_project/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/HUSTAR11/AndroidStudioProjects/AndroidApp_project/app/src/main/res/layout/fragment_dashboard.xml" value="0.23854166666666668" />
