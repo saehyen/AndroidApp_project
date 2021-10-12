@@ -59,6 +59,21 @@ public class DashboardFragment extends Fragment {
         items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어..."));
         items.add(new Item("커피스미스드래프트 비젼스퀘어점", "http://image_url.jpg", "대구 동구 이노벨리로 322 1층 135호..."));
         items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "..."));
+        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)"));
+        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... "));
+        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어..."));
+
+        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "..."));
+        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)"));
+        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... "));
+        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어..."));
+
+        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "..."));
+        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)"));
+        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... "));
+        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어..."));
+
+        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "..."));
     }
 
 }
