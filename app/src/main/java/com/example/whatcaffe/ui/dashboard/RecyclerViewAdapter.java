@@ -44,12 +44,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //데이터오 뷰를 바인딩
         String url = mPersons.get(position).photo;
         holder.name.setText(mPersons.get(position).name);
+        holder.summary.setText(mPersons.get(position).summary);
+        holder.bean.setText(mPersons.get(position).bean);
 //        Glide.with(mContext)
 //                .load(url)
 //                .centerCrop()
 //                .crossFade()
 //                .into(holder.imageView);
-        holder.summary.setText(mPersons.get(position).summary);
 
 //        클릭하면 웹검색하게 하자.
         holder.search.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView name;
         //public ImageView imageView;
         public TextView summary;
+        public TextView bean;
         ImageView search;
 
         public MyViewHolder(View itemView) {
@@ -84,6 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //imageView = (ImageView) itemView.findViewById(R.id.imageView);
             summary = (TextView) itemView.findViewById(R.id.tv_summary);
             search = (ImageView) itemView.findViewById(R.id.bt_search);
+            bean = (TextView) itemView.findViewById(R.id.item_bean);
             search.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
         }
     }

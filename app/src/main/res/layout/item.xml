@@ -59,6 +59,13 @@
                     android:text="요약"
                     android:ellipsize="end"
                     android:singleLine="true"/>
+                <TextView
+                    android:id="@+id/item_bean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bean"
+                    android:ellipsize="end"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
