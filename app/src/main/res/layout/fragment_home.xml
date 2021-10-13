@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <!-- 맵을 보여주는 mapView -->
     <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
@@ -13,7 +14,73 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <!--현재 위치로 이동하는 버튼-->
+        <Button
+            android:id="@+id/location_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="65dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="현재위치" />
+
+        <!--원두 맛을 선택하는 버튼-->
+        <Button
+            android:id="@+id/beans_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="65dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="원두 맛" />
+
+        <!--신맛 원두를 사용하는 카페만 보이게 하는 버튼-->
+        <Button
+            android:id="@+id/acidic_beans_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="115dp"
+            android:background="@color/colorPrimaryDark"
+            android:visibility="invisible"
+            android:text="신 맛" />
+
+        <!-- 중간 맛 원두를 사용하는 카페만 보이게 하는 버튼-->
+        <Button
+            android:id="@+id/medium_beans_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="165dp"
+            android:background="@color/colorPrimaryDark"
+            android:visibility="invisible"
+            android:text="중간 맛" />
+
+        <!--탄맛 원두를 사용하는 카페만 보이게 하는 버튼-->
+        <Button
+            android:id="@+id/smoky_beans_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="215dp"
+            android:background="@color/colorPrimaryDark"
+            android:visibility="invisible"
+            android:text="탄 맛" />
+
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
