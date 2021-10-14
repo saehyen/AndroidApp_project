@@ -16,9 +16,13 @@
         android:theme="@style/Theme.WhatCaffe"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ItemActivity"
-            android:label="카페 정보"
+            android:name=".NotificationActivity"
+            android:label="공지사항"
             android:exported="true" />
+        <activity
+            android:name=".ItemActivity"
+            android:exported="true"
+            android:label="카페 정보" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
