@@ -6,8 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
 import com.yanzhenjie.permission.Action;
@@ -18,6 +23,7 @@ import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.sql.Array;
 import java.util.List;
 
 
@@ -28,21 +34,23 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private Context context;
     private MapView mapView;
     private ViewGroup mapViewContainer;
+    private GpsTracker gpsTracker;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         context = container.getContext();
-        MapPOIItem marker_1 = new MapPOIItem();
-        MapPOIItem marker_2 = new MapPOIItem();
-        MapPOIItem marker_3 = new MapPOIItem();
-        MapPOIItem marker_4 = new MapPOIItem();
-        MapPOIItem marker_5 = new MapPOIItem();
+        MapPOIItem markerCurrentLocation = new MapPOIItem();
+        MapPOIItem marker1 = new MapPOIItem();
+        MapPOIItem marker2 = new MapPOIItem();
+        MapPOIItem marker3 = new MapPOIItem();
+        MapPOIItem[] marker = new MapPOIItem[3];
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        String[] beansInfo = new String[3];
 
         //AndPermission으로 위치 권한 받기
-        AndPermission.with(this)
+        AndPermission.with(getActivity())
                 .runtime()
                 .permission(
                         Permission.ACCESS_FINE_LOCATION,
@@ -56,6 +64,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 .onDenied(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
+                        Toast.makeText(getContext(), "Request Permission is denied", Toast.LENGTH_LONG).show();
                     }
                 })
                 .start();
@@ -64,40 +73,57 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView = new MapView(getActivity());
         mapViewContainer = root.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
-        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+        gpsTracker = new GpsTracker(context);
+
+        Button setCurrentLocationButton = root.findViewById(R.id.location_button);
+
+        setCurrentLocationButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
+
+                mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
+
+                MapPoint mapPointCurrentLocation = MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                markerCurrentLocation.setItemName("현재 위치");
+                markerCurrentLocation.setTag(0);
+                markerCurrentLocation.setMapPoint(mapPointCurrentLocation);
+                markerCurrentLocation.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                markerCurrentLocation.setCustomImageResourceId(R.drawable.currentlocationmarker);
+                mapView.addPOIItem(markerCurrentLocation);
+            }
+
+        });
+
 
         //맵 포인트 위도경도 설정
-        MapPoint mapPoint_1 = MapPoint.mapPointWithGeoCoord(35.86984, 128.73297);
-        marker_1.setItemName("프라우송");
-        marker_1.setTag(0);
-        marker_1.setMapPoint(mapPoint_1);
-        marker_1.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker_1.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(marker_1);
+        MapPoint mapPoint_1 = MapPoint.mapPointWithGeoCoord(35.86985, 128.73295);
+        marker1.setItemName("프라우송 \n탄맛");
+        marker1.setTag(1);
+        marker1.setMapPoint(mapPoint_1);
+        marker1.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+        marker1.setCustomImageResourceId(R.drawable.caffeemarker);
+        beansInfo[0] = marker1.getItemName();
+        mapView.addPOIItem(marker1);
 
-        MapPoint mapPoint_2 = MapPoint.mapPointWithGeoCoord(35.87901, 128.73027);
-        marker_2.setItemName("투썸플레이스 대구혁신도시점");
-        marker_2.setTag(1);
-        marker_2.setMapPoint(mapPoint_2);
-        marker_2.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker_2.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(marker_2);
+        MapPoint mapPoint_2 = MapPoint.mapPointWithGeoCoord(35.87906, 128.73038);
+        marker2.setItemName("투썸플레이스 대구혁신도시점 \n중간맛");
+        marker2.setTag(2);
+        marker2.setMapPoint(mapPoint_2);
+        marker2.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+        marker2.setCustomImageResourceId(R.drawable.caffeemarker);
+        beansInfo[1] = marker2.getItemName();
+        mapView.addPOIItem(marker2);
 
-        MapPoint mapPoint_3 = MapPoint.mapPointWithGeoCoord(35.87719, 128.73147);
-        marker_3.setItemName("핸즈커피 신서혁신 도시점");
-        marker_3.setTag(2);
-        marker_3.setMapPoint(mapPoint_3);
-        marker_3.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker_3.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(marker_3);
-
-        MapPoint mapPoint_4 = MapPoint.mapPointWithGeoCoord(35.87719, 128.73147);
-        marker_4.setItemName("핸즈커피 신서혁신 도시점");
-        marker_4.setTag(2);
-        marker_4.setMapPoint(mapPoint_4);
-        marker_4.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker_4.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(marker_4);
+        MapPoint mapPoint_3 = MapPoint.mapPointWithGeoCoord(35.877220, 128.732016);
+        marker3.setItemName("핸즈커피 신서혁신 도시점 \n신맛");
+        marker3.setTag(3);
+        marker3.setMapPoint(mapPoint_3);
+        marker3.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+        marker3.setCustomImageResourceId(R.drawable.caffeemarker);
+        beansInfo[2] = marker3.getItemName();
+        mapView.addPOIItem(marker3);
 
         // '원두 맛' 버튼을 누르면 차례대로 '신 맛', '중간 맛', '탄 맛' 버튼이 생성.
         Button beansButton = root.findViewById(R.id.add_button);
@@ -123,19 +149,29 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             }
         });
 
-
-        // '현재위치' 버튼을 터치하면 지도를 현재 위치 기준으로 위치한다.
-        Button setCurrentLocationButton = (Button) root.findViewById(R.id.location_button);
-
-        setCurrentLocationButton.setOnClickListener(new Button.OnClickListener() {
+        acidicBeansButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
+                        if(beansInfo[0].contains("신맛")) {
+                            marker1.setCustomImageResourceId(R.drawable.big_caffeemarker);
+                        }
+                        if(beansInfo[1].contains("신맛")) {
+                            marker2.setCustomImageResourceId(R.drawable.big_caffeemarker);
+                        }
+                        if(beansInfo[2].contains("신맛"))
+                            marker3.setCustomImageResourceId(R.drawable.big_caffeemarker);
             }
         });
 
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
+
         return root;
     }
+
+
+
+
 
     @Override
     public void onCurrentLocationUpdate(MapView mapView, MapPoint mapPoint, float v) {
