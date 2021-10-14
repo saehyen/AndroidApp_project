@@ -16,70 +16,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <!--현재 위치로 이동하는 버튼-->
         <Button
             android:id="@+id/location_button"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="65dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="현재위치" />
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_button"
+            android:foreground="@drawable/pngwing_com__1__removebg_preview" />
 
-        <!--원두 맛을 선택하는 버튼-->
-        <Button
-            android:id="@+id/beans_button"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="65dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="원두 맛" />
-
-        <!--신맛 원두를 사용하는 카페만 보이게 하는 버튼-->
         <Button
             android:id="@+id/acidic_beans_button"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="115dp"
-            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="75dp"
+            android:background="@drawable/round_button"
+            android:foreground="@drawable/__kakaotalk_20211013_102140305_02_removebg_preview_removebg_preview"
+            android:textAlignment="center"
+            android:textSize="20sp"
             android:visibility="invisible"
-            android:text="신 맛" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- 중간 맛 원두를 사용하는 카페만 보이게 하는 버튼-->
         <Button
             android:id="@+id/medium_beans_button"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="165dp"
-            android:background="@color/colorPrimaryDark"
-            android:visibility="invisible"
-            android:text="중간 맛" />
+            android:layout_marginBottom="205dp"
+            android:background="@drawable/round_button"
+            android:foreground="@drawable/__kakaotalk_20211013_102140305_removebg_preview_removebg_preview"
+            android:visibility="invisible" />
 
-        <!--탄맛 원두를 사용하는 카페만 보이게 하는 버튼-->
         <Button
             android:id="@+id/smoky_beans_button"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="215dp"
-            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="140dp"
+            android:background="@drawable/round_button"
+            android:foreground="@drawable/__kakaotalk_20211013_102140305_01_removebg_preview_removebg_preview"
             android:visibility="invisible"
-            android:text="탄 맛" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_button"
+            android:foreground="@android:drawable/ic_menu_add"
+            app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
 
 

@@ -19,48 +19,51 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.whatcaffe.databinding.ActivityMainBinding;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
+
+import net.daum.mf.map.api.MapPoint;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
-
-//    private void getHashKey(){
-//        PackageInfo packageInfo = null;
-//        try {
-//            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        if (packageInfo == null)
-//            Log.e("KeyHash", "KeyHash:null");
-//
-//        for (Signature signature : packageInfo.signatures) {
-//            try {
-//                MessageDigest md = MessageDigest.getInstance("SHA");
-//                md.update(signature.toByteArray());
-//                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-//            } catch (NoSuchAlgorithmException e) {
-//                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
-//            }
-//        }
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getHashKey();
+
+
+        //AndPermission으로 위치 권한 받기
+           AndPermission.with(this)
+                  .runtime()
+                 .permission(
+                       Permission.ACCESS_FINE_LOCATION,
+                     Permission.ACCESS_COARSE_LOCATION)
+           .onGranted(new Action<List<String>>() {
+             @Override
+            public void onAction(List<String> permissions) {
+
+        }
+        })
+          .onDenied(new Action<List<String>>() {
+            @Override
+          public void onAction(List<String> permissions) {
+              }
+         })
+         .start();
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         System.out.println("hihihihi" + navView.getHeight());
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -70,13 +73,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
-
     }
-
-
-
-
-
 
 }
