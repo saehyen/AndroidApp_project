@@ -31,8 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="카페 이름"
                     android:textSize="40sp"
-                    android:textFontWeight="500"
-                    android:fontFamily="@font/cookierunbold"></TextView>
+                    android:textFontWeight="500"/>
 
                 <ImageView
                     android:id="@+id/imageView"
