@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.whatcaffe.ItemActivity;
+import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.ItemBinding;
 
@@ -61,6 +63,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, term);
                 mContext.startActivity(intent);
+
+            }
+        });
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //클릭시 웹검색하게 하자.
+                Intent intent = new Intent(mContext ,ItemActivity.class);
+                mContext.startActivity(intent);
+
             }
         });
     }
