@@ -1,7 +1,6 @@
 package com.example.whatcaffe.ui.home;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +12,15 @@ import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
-import android.location.LocationListener;
 
 
-public class HomeFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, LocationListener {
+public class HomeFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
 
     private FragmentHomeBinding binding;
     int buttonIndex = 0;
     private Context context;
     private MapView mapView;
     private ViewGroup mapViewContainer;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +34,9 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView = new MapView(getActivity());
         mapViewContainer = root.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
 
         // '원두 맛' 버튼을 누르면 차례대로 '신 맛', '중간 맛', '탄 맛' 버튼이 생성.
         Button beansButton = root.findViewById(R.id.add_button);
@@ -74,11 +74,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         });
 
         return root;
-    }
-
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
-
     }
 
     @Override
