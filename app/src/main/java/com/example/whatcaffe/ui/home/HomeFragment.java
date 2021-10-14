@@ -11,12 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
-import com.yanzhenjie.permission.Action;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.runtime.Permission;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
-import java.util.List;
 import android.location.LocationListener;
 
 
@@ -73,7 +69,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         setCurrentLocationButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
+                mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
             }
         });
 
