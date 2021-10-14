@@ -38,27 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        //AndPermission으로 위치 권한 받기
-           AndPermission.with(this)
-                  .runtime()
-                 .permission(
-                       Permission.ACCESS_FINE_LOCATION,
-                     Permission.ACCESS_COARSE_LOCATION)
-           .onGranted(new Action<List<String>>() {
-             @Override
-            public void onAction(List<String> permissions) {
-
-        }
-        })
-          .onDenied(new Action<List<String>>() {
-            @Override
-          public void onAction(List<String> permissions) {
-              }
-         })
-         .start();
-
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
