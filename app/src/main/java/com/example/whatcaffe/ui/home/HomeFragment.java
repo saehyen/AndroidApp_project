@@ -204,8 +204,8 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             item.setItemName(place.place_name);
             item.setTag(0);
             item.setMapPoint(point);
-            item.setMarkerType(MapPOIItem.MarkerType.BluePin);
-            item.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+            item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+            item.setCustomImageResourceId(R.drawable.caffeemarker);
 
             map.addPOIItem(item);
             if (i == 0) {
