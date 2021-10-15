@@ -201,11 +201,12 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             MapPOIItem item = new MapPOIItem();
             MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
 
-            item.setItemName(place.place_name);
+            item.setItemName(place.place_name + "\n 거리: " +
+                    String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
             item.setTag(0);
             item.setMapPoint(point);
-            item.setMarkerType(MapPOIItem.MarkerType.BluePin);
-            item.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+            item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+            item.setCustomImageResourceId(R.drawable.caffeemarker);
 
             map.addPOIItem(item);
             if (i == 0) {
@@ -213,6 +214,29 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 map.setMapCenterPoint(point, false);
             }
         }
+    }
+
+    public double getDistance(double currentLat, double currentLng, double targetLat, double targetLng) {
+
+        double theta = currentLng - targetLng;
+        double dist = Math.sin(deg2rad(currentLat)) * Math.sin(deg2rad(targetLat)) + Math.cos(deg2rad(currentLat)) * Math.cos(deg2rad(targetLat)) * Math.cos(deg2rad(theta));
+
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        dist = dist * 1.609344;
+
+        return dist;
+    }
+
+    // This function converts decimal degrees to radians
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    // This function converts radians to decimal degrees
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
     }
 
 }

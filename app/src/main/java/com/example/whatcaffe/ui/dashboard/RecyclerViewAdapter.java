@@ -65,16 +65,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, term);
                 mContext.startActivity(intent);
-
             }
         });
+
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //클릭시 웹검색하게 하자.
                 Intent intent = new Intent(mContext , ItemActivity.class);
                 mContext.startActivity(intent);
-
             }
         });
     }
