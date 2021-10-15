@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.whatcaffe.ItemActivity;
+import com.example.whatcaffe.LogInActivity;
 import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
+import com.example.whatcaffe.SignUpActivity;
 import com.example.whatcaffe.databinding.ItemBinding;
 
 import java.util.ArrayList;
@@ -70,7 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 //클릭시 웹검색하게 하자.
-                Intent intent = new Intent(mContext ,ItemActivity.class);
+                Intent intent = new Intent(mContext , LogInActivity.class);
                 mContext.startActivity(intent);
 
             }

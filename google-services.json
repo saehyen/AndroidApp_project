@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1058752450301",
+    "project_id": "beansmap-55c16",
+    "storage_bucket": "beansmap-55c16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058752450301:android:5be997830c2b1639ceb894",
+        "android_client_info": {
+          "package_name": "com.example.whatcaffe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058752450301-0bj1sotqov782u634u3699ic3enl01qh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.whatcaffe",
+            "certificate_hash": "e03acd7965fde2baf3c079561de9c3265a47a876"
+          }
+        },
+        {
+          "client_id": "1058752450301-dqakjhg4mg249djmdeq3mr8q57ekt4l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZEnVC1yETeY7qImiLZ5fFuJBiRvetO9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058752450301-dqakjhg4mg249djmdeq3mr8q57ekt4l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

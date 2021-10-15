@@ -16,9 +16,18 @@
         android:theme="@style/Theme.WhatCaffe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".LogInActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".NotificationActivity"
-            android:label="공지사항"
-            android:exported="true" />
+            android:exported="true"
+            android:label="공지사항" />
         <activity
             android:name=".ItemActivity"
             android:exported="true"
