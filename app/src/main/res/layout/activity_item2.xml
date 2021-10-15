@@ -24,39 +24,77 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="카페 이름"
-                    android:textSize="40sp"
-                    android:textFontWeight="500"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.1dp"
+                    android:background="#212121" />
 
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="232dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/frausong" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frausong"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="카페 이름"
+                    android:textSize="20sp"
+                    android:textFontWeight="500"
+                    android:gravity="center"
+
+                    />
+
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="현재 위치와의 거리" />
+                    android:gravity="center"
+                    android:text="현재 위치와의 거리"
+                    android:textColor="#bdbdbd"
+                    android:padding="5dp"/>
 
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text=""
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.1dp"
+                    android:background="#382405"/>
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="주소" />
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="주소"/>
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="평점" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="원두" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.1dp"
+                    android:background="#382405" />
 
             </LinearLayout>
         </ScrollView>
