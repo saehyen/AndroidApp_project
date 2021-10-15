@@ -16,14 +16,17 @@
         android:theme="@style/Theme.WhatCaffe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BookmarkActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="true" />
+        <activity
             android:name=".SignUpActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".LogInActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".LogInActivity"
+            android:exported="true" />
         <activity
             android:name=".NotificationActivity"
             android:exported="true"

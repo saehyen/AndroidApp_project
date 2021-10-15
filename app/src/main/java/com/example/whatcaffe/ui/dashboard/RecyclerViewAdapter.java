@@ -72,7 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 //클릭시 웹검색하게 하자.
-                Intent intent = new Intent(mContext , LogInActivity.class);
+                Intent intent = new Intent(mContext , ItemActivity.class);
                 mContext.startActivity(intent);
 
             }

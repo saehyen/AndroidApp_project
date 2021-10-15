@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NotificationActivity">
+    tools:context=".BookmarkActivity">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="공지사항  페이지" />
+        android:text="즐겨찾기 페이지" />
 </LinearLayout>
