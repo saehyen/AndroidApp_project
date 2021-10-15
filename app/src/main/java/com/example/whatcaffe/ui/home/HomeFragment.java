@@ -2,6 +2,7 @@ package com.example.whatcaffe.ui.home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
@@ -29,48 +32,40 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private FragmentHomeBinding binding;
     int buttonIndex = 0;
     private Context context;
-    private MapView mapView;
-    private ViewGroup mapViewContainer;
+    private MapView mapView = null;
+    private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
+    private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        homeViewModel =
+            new ViewModelProvider(this).get(HomeViewModel.class);
+        Log.d("Kakao Map App", "onCreateView is called...");
+
         context = container.getContext();
         MapPOIItem markerCurrentLocation = new MapPOIItem();
-        MapPOIItem marker1 = new MapPOIItem();
-        MapPOIItem marker2 = new MapPOIItem();
-        MapPOIItem marker3 = new MapPOIItem();
-        MapPOIItem[] marker = new MapPOIItem[3];
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        String[] beansInfo = new String[3];
 
-        //AndPermission으로 위치 권한 받기
-        AndPermission.with(getActivity())
-                .runtime()
-                .permission(
-                        Permission.ACCESS_FINE_LOCATION,
-                        Permission.ACCESS_COARSE_LOCATION)
-                .onGranted(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> permissions) {
 
-                    }
-                })
-                .onDenied(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> permissions) {
-                        Toast.makeText(getContext(), "Request Permission is denied", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .start();
+
 
         // 맵을 HomeFragment에 표시
         mapView = new MapView(getActivity());
         mapViewContainer = root.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
         gpsTracker = new GpsTracker(context);
+        mapView.setCurrentLocationEventListener(this);
+        mapView.setMapViewEventListener(this);
+
+        homeViewModel.getPlaces().observe(getViewLifecycleOwner(), new Observer<List<Place>>() {
+            @Override
+            public void onChanged(List<Place> places) {
+                createPlaceMarker(mapView, places);
+            }
+        });
 
         Button setCurrentLocationButton = root.findViewById(R.id.location_button);
 
@@ -154,9 +149,12 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
     @Override
     public void onMapViewInitialized(MapView mapView) {
-
+        Log.d("Kakao Map App", "onMapViewInitialized is called...");
+        if (homeViewModel != null) {
+            Log.d("Kakao Map App", "Caffe List Data is Requesting...");
+            homeViewModel.getCaffeListData();
+        }
     }
-
     @Override
     public void onMapViewCenterPointMoved(MapView mapView, MapPoint mapPoint) {
 
@@ -196,4 +194,25 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     public void onMapViewMoveFinished(MapView mapView, MapPoint mapPoint) {
 
     }
+
+    private void createPlaceMarker(MapView map, List<Place> places) {
+        for (int i = 0; i < places.size(); i++) {
+            Place place = places.get(i);
+            MapPOIItem item = new MapPOIItem();
+            MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
+
+            item.setItemName(place.place_name);
+            item.setTag(0);
+            item.setMapPoint(point);
+            item.setMarkerType(MapPOIItem.MarkerType.BluePin);
+            item.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+
+            map.addPOIItem(item);
+            if (i == 0) {
+                map.selectPOIItem(item, true);
+                map.setMapCenterPoint(point, false);
+            }
+        }
+    }
+
 }

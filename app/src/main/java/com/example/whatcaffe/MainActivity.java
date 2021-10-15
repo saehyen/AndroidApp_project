@@ -1,5 +1,6 @@
 package com.example.whatcaffe;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -52,6 +54,47 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        //AndPermission으로 위치 권한 받기
+        AndPermission.with(this)
+                .runtime()
+                .permission(
+                        Permission.ACCESS_FINE_LOCATION,
+                        Permission.ACCESS_COARSE_LOCATION)
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+
+                    }
+                })
+                .onDenied(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        Toast.makeText(getApplicationContext(), "Request Permission is denied", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .start();
+
+        getKeyHash(this);
+
+    }
+    public static void getKeyHash(Context context){
+        PackageManager pm = context.getPackageManager();
+        try{
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+
+            for(int i = 0; i < packageInfo.signatures.length; i++){
+                Signature signature = packageInfo.signatures[i];
+                try {
+                    MessageDigest md = MessageDigest.getInstance("SHA");
+                    md.update(signature.toByteArray());
+                    Log.d("MainActivity","keyhash="+ Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+        }catch(PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
 }
