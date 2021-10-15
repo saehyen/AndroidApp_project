@@ -92,6 +92,36 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
         });
 
+        // '원두 맛' 버튼을 누르면 차례대로 '신 맛', '중간 맛', '탄 맛' 버튼이 생성.
+        Button beansButton = root.findViewById(R.id.add_button);
+        Button acidicBeansButton = root.findViewById(R.id.acidic_beans_button);
+        Button mediumBeansButton = root.findViewById(R.id.medium_beans_button);
+        Button smokyBeansButton = root.findViewById(R.id.smoky_beans_button);
+        Button resetButton = root.findViewById(R.id.reset_button);
+        Button decafButton = root.findViewById(R.id.decaf_beans_button);
+
+        beansButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (buttonIndex == 0) {
+                    acidicBeansButton.setVisibility(View.VISIBLE);
+                    mediumBeansButton.setVisibility(View.VISIBLE);
+                    smokyBeansButton.setVisibility(View.VISIBLE);
+                    resetButton.setVisibility(View.VISIBLE);
+                    decafButton.setVisibility(View.VISIBLE);
+                    buttonIndex = 1;
+                } else if (buttonIndex == 1) {
+                    acidicBeansButton.setVisibility(View.INVISIBLE);
+                    mediumBeansButton.setVisibility(View.INVISIBLE);
+                    smokyBeansButton.setVisibility(View.INVISIBLE);
+                    resetButton.setVisibility(View.INVISIBLE);
+                    decafButton.setVisibility(View.INVISIBLE);
+                    buttonIndex = 0;
+                }
+            }
+        });
+
 
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
 
