@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
 import com.yanzhenjie.permission.Action;
@@ -23,7 +21,6 @@ import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
-import java.sql.Array;
 import java.util.List;
 
 
@@ -99,7 +96,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
         //맵 포인트 위도경도 설정
         MapPoint mapPoint_1 = MapPoint.mapPointWithGeoCoord(35.86985, 128.73295);
-        marker1.setItemName("프라우송 \n탄맛");
+        marker1.setItemName("프라우송 \n 탄맛(Smoky)");
         marker1.setTag(1);
         marker1.setMapPoint(mapPoint_1);
         marker1.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -108,7 +105,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView.addPOIItem(marker1);
 
         MapPoint mapPoint_2 = MapPoint.mapPointWithGeoCoord(35.87906, 128.73038);
-        marker2.setItemName("투썸플레이스 대구혁신도시점 \n중간맛");
+        marker2.setItemName("투썸플레이스 대구혁신도시점 \n 신맛(Medium) / 디카페인(Decaf)");
         marker2.setTag(2);
         marker2.setMapPoint(mapPoint_2);
         marker2.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -117,7 +114,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView.addPOIItem(marker2);
 
         MapPoint mapPoint_3 = MapPoint.mapPointWithGeoCoord(35.877220, 128.732016);
-        marker3.setItemName("핸즈커피 신서혁신 도시점 \n신맛");
+        marker3.setItemName("핸즈커피 신서혁신 도시점 \n 중간맛(Medium) / 신맛(Acidic) / 디카페인(Decaf)");
         marker3.setTag(3);
         marker3.setMapPoint(mapPoint_3);
         marker3.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -128,8 +125,10 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         // '원두 맛' 버튼을 누르면 차례대로 '신 맛', '중간 맛', '탄 맛' 버튼이 생성.
         Button beansButton = root.findViewById(R.id.add_button);
         Button acidicBeansButton = root.findViewById(R.id.acidic_beans_button);
-        Button mediumBeansButton = root.findViewById(R.id.medium_beans_button);
-        Button smokyBeansButton = root.findViewById(R.id.smoky_beans_button);
+        Button mediumBeansButton = root.findViewById(R.id.smoky_beans_button);
+        Button smokyBeansButton = root.findViewById(R.id.medium_beans_button);
+        Button decafBeansButton = root.findViewById(R.id.decaf_beans_button);
+        Button resetButton = root.findViewById(R.id.reset_button);
 
         beansButton.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -139,11 +138,15 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                     acidicBeansButton.setVisibility(View.VISIBLE);
                     mediumBeansButton.setVisibility(View.VISIBLE);
                     smokyBeansButton.setVisibility(View.VISIBLE);
+                    decafBeansButton.setVisibility(View.VISIBLE);
+                    resetButton.setVisibility(View.VISIBLE);
                     buttonIndex = 1;
                 } else if (buttonIndex == 1) {
                     acidicBeansButton.setVisibility(View.INVISIBLE);
                     mediumBeansButton.setVisibility(View.INVISIBLE);
                     smokyBeansButton.setVisibility(View.INVISIBLE);
+                    decafBeansButton.setVisibility(View.INVISIBLE);
+                    resetButton.setVisibility(View.INVISIBLE);
                     buttonIndex = 0;
                 }
             }
@@ -153,16 +156,86 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             @Override
             public void onClick(View view) {
 
-                        if(beansInfo[0].contains("신맛")) {
-                            marker1.setCustomImageResourceId(R.drawable.big_caffeemarker);
+                        if(beansInfo[0].contains("Acidic")) {
+                            mapView.removePOIItem(marker1);
+                            marker1.setCustomImageResourceId(R.drawable.acidicmarker);
+                            mapView.addPOIItem(marker1);
                         }
-                        if(beansInfo[1].contains("신맛")) {
-                            marker2.setCustomImageResourceId(R.drawable.big_caffeemarker);
+                        else if(beansInfo[1].contains("Acidic")) {
+                            mapView.removePOIItem(marker2);
+                            marker2.setCustomImageResourceId(R.drawable.acidicmarker);
+                            mapView.addPOIItem(marker2);
                         }
-                        if(beansInfo[2].contains("신맛"))
-                            marker3.setCustomImageResourceId(R.drawable.big_caffeemarker);
+                        else if(beansInfo[2].contains("Acidic")) {
+                            marker3.setCustomImageResourceId(R.drawable.acidicmarker);
+                            mapView.addPOIItem(marker3);
+                        }
             }
         });
+
+        mediumBeansButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(beansInfo[0].contains("Medium")) {
+                    marker1.setCustomImageResourceId(R.drawable.mediummarker);
+                    mapView.addPOIItem(marker1);
+                }
+                else if(beansInfo[1].contains("Medium")) {
+                    marker2.setCustomImageResourceId(R.drawable.mediummarker);
+                    mapView.addPOIItem(marker2);
+                }
+                else if(beansInfo[2].contains("Medium")) {
+                    marker3.setCustomImageResourceId(R.drawable.mediummarker);
+                    mapView.addPOIItem(marker3);
+                }
+            }
+        });
+
+        smokyBeansButton.setOnClickListener(new Button.OnClickListener() {
+        public void onClick(View view) {
+
+            if(beansInfo[0].contains("Smoky")) {
+                marker1.setCustomImageResourceId(R.drawable.smokymarker);
+                mapView.addPOIItem(marker1);
+            }
+            else if(beansInfo[1].contains("Smoky")) {
+                marker2.setCustomImageResourceId(R.drawable.smokymarker);
+                mapView.addPOIItem(marker2);
+            }
+            else if(beansInfo[2].contains("Smoky")) {
+                marker3.setCustomImageResourceId(R.drawable.smokymarker);
+                mapView.addPOIItem(marker3);
+            }
+        }
+    });
+
+        decafBeansButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+
+                if(beansInfo[0].contains("Decaf")) {
+                    marker1.setCustomImageResourceId(R.drawable.decafmarker);
+                    mapView.addPOIItem(marker1);
+                }
+                else if(beansInfo[1].contains("Decaf")) {
+                    marker2.setCustomImageResourceId(R.drawable.decafmarker);
+                    mapView.addPOIItem(marker2);
+                }
+                else if(beansInfo[2].contains("Decaf")) {
+                    marker3.setCustomImageResourceId(R.drawable.decafmarker);
+                    mapView.addPOIItem(marker3);
+                }
+            }
+        });
+
+        resetButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+                    marker1.setCustomImageResourceId(R.drawable.caffeemarker);
+                    marker2.setCustomImageResourceId(R.drawable.caffeemarker);
+                    marker3.setCustomImageResourceId(R.drawable.caffeemarker);
+            }
+        });
+
 
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
 
