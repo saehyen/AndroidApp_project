@@ -74,28 +74,28 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .start();
 
-//        getKeyHash(this);
+        getKeyHash(this);
 
     }
-//    public static void getKeyHash(Context context){
-//        PackageManager pm = context.getPackageManager();
-//        try{
-//            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-//
-//            for(int i = 0; i < packageInfo.signatures.length; i++){
-//                Signature signature = packageInfo.signatures[i];
-//                try {
-//                    MessageDigest md = MessageDigest.getInstance("SHA");
-//                    md.update(signature.toByteArray());
-//                    Log.d("MainActivity","keyhash="+ Base64.encodeToString(md.digest(), Base64.NO_WRAP));
-//                } catch (NoSuchAlgorithmException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }catch(PackageManager.NameNotFoundException e){
-//            e.printStackTrace();
-//        }
-//    }
+    public static void getKeyHash(Context context){
+        PackageManager pm = context.getPackageManager();
+        try{
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+
+            for(int i = 0; i < packageInfo.signatures.length; i++){
+                Signature signature = packageInfo.signatures[i];
+                try {
+                    MessageDigest md = MessageDigest.getInstance("SHA");
+                    md.update(signature.toByteArray());
+                    Log.d("MainActivity","keyhash="+ Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+        }catch(PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
+    }
 
 
 

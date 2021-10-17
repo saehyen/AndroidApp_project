@@ -16,11 +16,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 
-import net.daum.mf.map.api.CalloutBalloonAdapter;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
@@ -37,19 +38,25 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
     private HomeViewModel homeViewModel;
-    private String distance;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
+    //현재 연결은 데이터베이스에만 딱 연결해놓고
+    //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
+    private DatabaseReference databaseReference = database.getReference();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         homeViewModel =
-            new ViewModelProvider(this).get(HomeViewModel.class);
+                new ViewModelProvider(this).get(HomeViewModel.class);
         Log.d("Kakao Map App", "onCreateView is called...");
 
         context = container.getContext();
         MapPOIItem markerCurrentLocation = new MapPOIItem();
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
 
 
@@ -61,15 +68,12 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView.setCurrentLocationEventListener(this);
         mapView.setMapViewEventListener(this);
 
-
         homeViewModel.getPlaces().observe(getViewLifecycleOwner(), new Observer<List<Place>>() {
             @Override
             public void onChanged(List<Place> places) {
                 createPlaceMarker(mapView, places);
             }
         });
-        // mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
-
 
         Button setCurrentLocationButton = root.findViewById(R.id.location_button);
 
@@ -122,6 +126,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         });
 
 
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
 
         return root;
     }
@@ -198,15 +203,13 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
     }
 
-    private void createPlaceMarker(MapView map, List<Place> places) {
+    public void createPlaceMarker(MapView map, List<Place> places) {
         for (int i = 0; i < places.size(); i++) {
             Place place = places.get(i);
             MapPOIItem item = new MapPOIItem();
             MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
-            distance = String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x)) + "km");
 
-            item.setItemName(place.place_name + "\n 거리: " + distance);
-
+            item.setItemName(place.place_name + "\n 거리: " + String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
             item.setTag(0);
             item.setMapPoint(point);
             item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -219,6 +222,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             }
         }
     }
+
 
     public double getDistance(double currentLat, double currentLng, double targetLat, double targetLng) {
 
@@ -243,40 +247,4 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         return (rad * 180 / Math.PI);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-
 }
-
-class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
-    private final View mCalloutBalloon;
-    private Context context;
-
-    public CustomCalloutBalloonAdapter() {
-
-        mCalloutBalloon = getLayoutInflater().inflate(R.layout.balloon_layout, null);
-    }
-
-    @Override
-    public View getCalloutBalloon(MapPOIItem poiItem) {
-        ((TextView) mCalloutBalloon.findViewById(R.id.title)).setText(poiItem.getItemName());
-        ((TextView) mCalloutBalloon.findViewById(R.id.desc)).setText("Custom CalloutBalloon");
-        return mCalloutBalloon;
-    }
-
-    @Override
-    public View getPressedCalloutBalloon(MapPOIItem poiItem) {
-        return null;
-    }
-}
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        // 구현한 CalloutBalloonAdapter 등록
-        mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
-
-    }
