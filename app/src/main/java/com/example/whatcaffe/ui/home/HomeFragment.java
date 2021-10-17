@@ -16,8 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
@@ -38,12 +36,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
     private HomeViewModel homeViewModel;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
-    //현재 연결은 데이터베이스에만 딱 연결해놓고
-    //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
-    private DatabaseReference databaseReference = database.getReference();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -203,13 +195,14 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
     }
 
-    public void createPlaceMarker(MapView map, List<Place> places) {
+    private void createPlaceMarker(MapView map, List<Place> places) {
         for (int i = 0; i < places.size(); i++) {
             Place place = places.get(i);
             MapPOIItem item = new MapPOIItem();
             MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
 
-            item.setItemName(place.place_name + "\n 거리: " + String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
+            item.setItemName(place.place_name + "\n 거리: " +
+                    String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
             item.setTag(0);
             item.setMapPoint(point);
             item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -222,7 +215,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             }
         }
     }
-
 
     public double getDistance(double currentLat, double currentLng, double targetLat, double targetLng) {
 
