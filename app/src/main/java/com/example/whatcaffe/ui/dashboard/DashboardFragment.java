@@ -17,20 +17,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentDashboardBinding;
+import com.example.whatcaffe.ui.home.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardFragment extends Fragment {
     private ArrayList<Item> items = new ArrayList<>();
+    private final static String SEARCH_KEYWORD = "대구 신서동 커피";
+    private final static String API_KEY = "KakaoAK 341a477e04a5b89dcdb54cdc2bfc7c47";
+    private final static String LOG_TAG = "Kakao Map App";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        initDataset();
+//        initDataset();
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -51,23 +57,12 @@ public class DashboardFragment extends Fragment {
     2. 온라인에서 DB에서 일괄 가져 올 수 도 있다.
     어떻게든 itmes 배열에 데이터를 형식에 맞게 넣어 어답터와 연결만 하면 화면에 내용이 출력될것이다.
     */
-    private void initDataset() {
-        //초기화
-        items.clear();
-        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)","콜롬비아 마일드"));
-        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... ","에티오피아 하라"));
-        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어...","에티오피아 예가체프"));
-        items.add(new Item("커피스미스드래프트 비젼스퀘어점", "http://image_url.jpg", "대구 동구 이노벨리로 322 1층 135호...","하와이언 코나"));
-        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "...", "자메이카 블루마운틴"));
-        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)","콜롬비아 마일드"));
-        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... ","에티오피아 하라"));
-        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어...","에티오피아 예가체프"));
-        items.add(new Item("커피스미스드래프트 비젼스퀘어점", "http://image_url.jpg", "대구 동구 이노벨리로 322 1층 135호...","하와이언 코나"));
-        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "...", "자메이카 블루마운틴"));
-        items.add(new Item("프라우송", "http://image_url.jpg", "대구 동구 안심로90길 12(괴전동)","콜롬비아 마일드"));
-        items.add(new Item("투썸플레이스", "http://image_url.jpg", "동구 첨단로8길 1 1층... ","에티오피아 하라"));
-        items.add(new Item("핸즈커피 신서혁신도시점", "http://image_url.jpg", "대구 동구 이노벨리로 322 비젼스퀘어...","에티오피아 예가체프"));
-        items.add(new Item("커피스미스드래프트 비젼스퀘어점", "http://image_url.jpg", "대구 동구 이노벨리로 322 1층 135호...","하와이언 코나"));
-        items.add(new Item("카페봄봄 신서 혁신점", "http://image_url.jpg", "...", "자메이카 블루마운틴"));
-    }
+//    private void initDataset() {
+//        items.clear();
+//        for (int i = 0; i < CaffeListData.documents.size(); i++) {
+//            Place place = new Place();
+//        place = CaffeListDataDash.documents.get(i);
+//        items.add(new Item(place.place_name, place.address_name, place.phone));
+//    }
+//    }
 }

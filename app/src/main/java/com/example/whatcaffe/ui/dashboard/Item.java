@@ -3,24 +3,19 @@ package com.example.whatcaffe.ui.dashboard;
 public class Item {
 
     String name;
-    String photo;
-    String summary;
-    String bean;
+    String address;
+    String phone;
 
-    public Item(String name, String photo, String summary,String bean) {
+    public Item(String name, String address, String phone) {
         this.name = name;
-        this.photo = photo;
-        this.summary = summary;
-        this.bean = bean;
+        this.address = address;
+        this.phone = phone;
     }
 
 
     public String getName() { return name; }
-    public String getPhoto() {
-        return photo;
+    public String getAddress() {
+        return address;
     }
-    public String getSummary() {
-        return summary;
-    }
-    public String getBean() { return bean;  }
+    public String getPhone() { return phone; }
 }
