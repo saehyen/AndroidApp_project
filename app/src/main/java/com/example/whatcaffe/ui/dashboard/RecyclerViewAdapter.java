@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -68,10 +69,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        holder.name.setOnClickListener(new View.OnClickListener() {
+        holder.Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //클릭시 웹검색하게 하자.
+                //클릭시 엑티비티 이동
                 Intent intent = new Intent(mContext , ItemActivity.class);
                 mContext.startActivity(intent);
             }
@@ -91,6 +92,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView summary;
         public TextView bean;
         ImageView search;
+        CardView Card;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -100,7 +102,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             summary = (TextView) itemView.findViewById(R.id.tv_summary);
             search = (ImageView) itemView.findViewById(R.id.bt_search);
             bean = (TextView) itemView.findViewById(R.id.item_bean);
-            search.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+            Card = (CardView) itemView.findViewById(R.id.CardView_list);
         }
     }
 }
