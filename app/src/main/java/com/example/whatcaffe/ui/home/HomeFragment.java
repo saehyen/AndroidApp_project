@@ -20,6 +20,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 
+import net.daum.mf.map.api.CalloutBalloonAdapter;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
     private HomeViewModel homeViewModel;
+    private String distance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +53,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
 
 
 
-
         // 맵을 HomeFragment에 표시
         mapView = new MapView(getActivity());
         mapViewContainer = root.findViewById(R.id.map_view);
@@ -60,12 +61,15 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         mapView.setCurrentLocationEventListener(this);
         mapView.setMapViewEventListener(this);
 
+
         homeViewModel.getPlaces().observe(getViewLifecycleOwner(), new Observer<List<Place>>() {
             @Override
             public void onChanged(List<Place> places) {
                 createPlaceMarker(mapView, places);
             }
         });
+        // mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
+
 
         Button setCurrentLocationButton = root.findViewById(R.id.location_button);
 
@@ -118,7 +122,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         });
 
 
-        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
 
         return root;
     }
@@ -200,9 +203,10 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             Place place = places.get(i);
             MapPOIItem item = new MapPOIItem();
             MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
+            distance = String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x)) + "km");
 
-            item.setItemName(place.place_name + "\n 거리: " +
-                    String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
+            item.setItemName(place.place_name + "\n 거리: " + distance);
+
             item.setTag(0);
             item.setMapPoint(point);
             item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
@@ -239,4 +243,40 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         return (rad * 180 / Math.PI);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+
 }
+
+class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
+    private final View mCalloutBalloon;
+    private Context context;
+
+    public CustomCalloutBalloonAdapter() {
+
+        mCalloutBalloon = getLayoutInflater().inflate(R.layout.balloon_layout, null);
+    }
+
+    @Override
+    public View getCalloutBalloon(MapPOIItem poiItem) {
+        ((TextView) mCalloutBalloon.findViewById(R.id.title)).setText(poiItem.getItemName());
+        ((TextView) mCalloutBalloon.findViewById(R.id.desc)).setText("Custom CalloutBalloon");
+        return mCalloutBalloon;
+    }
+
+    @Override
+    public View getPressedCalloutBalloon(MapPOIItem poiItem) {
+        return null;
+    }
+}
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // 구현한 CalloutBalloonAdapter 등록
+        mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
+
+    }
