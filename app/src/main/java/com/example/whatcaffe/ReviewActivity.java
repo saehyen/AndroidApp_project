@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,7 @@ public class ReviewActivity extends AppCompatActivity {
     private Button buttonReview;
     private EditText reviewText;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
@@ -36,6 +40,9 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // SignUpActivity 연결
                 myRef.setValue(reviewText.getText().toString());
+                Toast.makeText(getApplicationContext(),"리뷰 작성이 완료되었습니다. ",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
         // Read from the database
@@ -46,7 +53,8 @@ public class ReviewActivity extends AppCompatActivity {
             // whenever data at this location is updated.
             String value = dataSnapshot.getValue(String.class);
             Log.d(TAG, "Value is: " + value);
-            }
+
+    }
 
     @Override
     public void onCancelled(DatabaseError error) {
