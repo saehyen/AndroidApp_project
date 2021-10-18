@@ -1,17 +1,18 @@
 package com.example.whatcaffe;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.whatcaffe.ui.home.*;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Toast;
 
 public class ItemActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item2);
+
     }
 
     public void onDefaultToggleClick(View view) {

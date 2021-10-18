@@ -16,6 +16,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
@@ -24,6 +26,7 @@ import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,12 +39,14 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
     private HomeViewModel homeViewModel;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         homeViewModel =
-            new ViewModelProvider(this).get(HomeViewModel.class);
+                new ViewModelProvider(this).get(HomeViewModel.class);
         Log.d("Kakao Map App", "onCreateView is called...");
 
         context = container.getContext();
@@ -213,7 +218,10 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 map.selectPOIItem(item, true);
                 map.setMapCenterPoint(point, false);
             }
+            writeCafeInfo(place.id, place.place_name, place.address_name, place.phone);
+
         }
+
     }
 
     public double getDistance(double currentLat, double currentLng, double targetLat, double targetLng) {
@@ -239,4 +247,10 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         return (rad * 180 / Math.PI);
     }
 
+    public void writeCafeInfo(String cafeId, String cafeName, String cafeAddress, String cafePhoneNum) {
+        CafeInfo cafeInfo = new CafeInfo(cafeId, cafeName, cafeAddress, cafePhoneNum);
+            databaseReference.child(cafeId).child("name").setValue(cafeName);
+            databaseReference.child(cafeId).child("address").setValue(cafeAddress);
+            databaseReference.child(cafeId).child("phoneNum").setValue(cafePhoneNum);
+    }
 }

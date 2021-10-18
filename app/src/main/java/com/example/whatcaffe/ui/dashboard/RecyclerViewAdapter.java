@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -45,10 +46,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         //데이터오 뷰를 바인딩
-        String url = mPersons.get(position).photo;
         holder.name.setText(mPersons.get(position).name);
-        holder.summary.setText(mPersons.get(position).summary);
-        holder.bean.setText(mPersons.get(position).bean);
+        holder.address.setText(mPersons.get(position).address);
+        holder.phone.setText(mPersons.get(position).phone);
 //        Glide.with(mContext)
 //                .load(url)
 //                .centerCrop()
@@ -56,22 +56,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //                .into(holder.imageView);
 
 //        클릭하면 웹검색하게 하자.
-        holder.search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //클릭시 웹검색하게 하자.
-                String term = mPersons.get(position).name;
-                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-                intent.putExtra(SearchManager.QUERY, term);
-                mContext.startActivity(intent);
+//        holder.search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //클릭시 웹검색하게 하자.
+//                String term = mPersons.get(position).name;
+//                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+//                intent.putExtra(SearchManager.QUERY, term);
+//                mContext.startActivity(intent);
+//            }
+//        });
 
-            }
-        });
-        holder.name.setOnClickListener(new View.OnClickListener() {
+        holder.Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //클릭시 웹검색하게 하자.
-                Intent intent = new Intent(mContext ,ItemActivity.class);
+                //클릭시 엑티비티 이동
+                Intent intent = new Intent(mContext , ItemActivity.class);
                 mContext.startActivity(intent);
 
             }
@@ -88,24 +88,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         //public ImageView imageView;
+
         public TextView summary;
         public TextView bean;
         ImageView search;
         ToggleButton favBtn;
         TextView likeCountTextView;
+        public TextView address;
+        public TextView phone;
+        CardView Card;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.tv_name);
             //imageView = (ImageView) itemView.findViewById(R.id.imageView);
+
             summary = (TextView) itemView.findViewById(R.id.tv_summary);
             search = (ImageView) itemView.findViewById(R.id.bt_search);
             bean = (TextView) itemView.findViewById(R.id.item_bean);
-            search.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+            
 
             favBtn=(ToggleButton) itemView.findViewById(R.id.favBtn);
             likeCountTextView=(TextView) itemView.findViewById(R.id.likeCountTextView);
+
+            address = (TextView) itemView.findViewById(R.id.tv_summary);
+            phone = (TextView) itemView.findViewById(R.id.item_bean);
+            Card = (CardView) itemView.findViewById(R.id.CardView_list);
+
         }
     }
 }
