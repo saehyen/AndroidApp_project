@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @IgnoreExtraProperties
 public class CafeInfo<mDBReference> {
     String cafeName;
     String cafeAddress;
     String cafePhoneNum;
+
 
     public String getCafeName() {
         return cafeName;
@@ -43,6 +45,15 @@ public class CafeInfo<mDBReference> {
         this.cafeName = cafeName;
         this.cafeAddress = cafeAddress;
         this.cafePhoneNum = cafePhoneNum;
+    }
+
+    @Override
+    public String toString() {
+        return "CafeInfo{" +
+                "cafeName='" + cafeName + '\'' +
+                ", cafeAddress='" + cafeAddress + '\'' +
+                ", cafePhoneNum='" + cafePhoneNum + '\'' +
+                '}';
     }
 
     @Exclude
