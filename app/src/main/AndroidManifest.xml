@@ -17,6 +17,9 @@
         android:theme="@style/Theme.WhatCaffe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ReviewShowActivity"
+            android:exported="true" />
+        <activity
             android:name=".BookmarkActivity"
             android:exported="true" />
         <activity
@@ -51,4 +54,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

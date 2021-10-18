@@ -19,3 +19,5 @@ public class Item2Activity extends AppCompatActivity {
 //        Toast.makeText(this, "onDefaultToggleClick", Toast.LENGTH_SHORT).show();
 //    }
 }
+
+
