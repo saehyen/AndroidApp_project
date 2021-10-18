@@ -14,14 +14,111 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/ReviewTextShow"
+                android:id="@+id/reviewTextView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="TextView" />
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView4"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView12"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView13"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView14"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView15"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView16"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView17"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/reviewTextView18"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="#e0e0e0"
+                android:text="리뷰를 작성한 곳입니다."
+                android:textSize="40sp">
+
+            </TextView>
+
         </LinearLayout>
+
+
     </ScrollView>
 
 </LinearLayout>
