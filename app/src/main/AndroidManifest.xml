@@ -39,7 +39,14 @@
             android:name=".ItemActivity"
             android:exported="true"
             android:label="카페 정보" />
-
+        <activity
+            android:name=".Item2Activity"
+            android:exported="true"
+            android:label="카페 정보" />
+        <activity
+            android:name=".ReviewWriteActivity"
+            android:exported="true"
+            android:label="카페 정보" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="73b02eb4936c1d04e69fd6c3a17c2d7c" /> <!-- 네이티브 앱 키 설정 -->
