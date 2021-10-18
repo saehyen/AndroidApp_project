@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context=".ItemActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +58,7 @@
                     android:text="현재 위치와의 거리"
                     android:textColor="#bdbdbd"
                     android:padding="5dp"/>
+
 
                 <TextView
                     android:id="@+id/textView12"

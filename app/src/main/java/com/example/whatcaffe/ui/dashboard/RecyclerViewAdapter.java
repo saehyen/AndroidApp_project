@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,10 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.whatcaffe.ItemActivity;
-import com.example.whatcaffe.LogInActivity;
 import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
-import com.example.whatcaffe.SignUpActivity;
 import com.example.whatcaffe.databinding.ItemBinding;
 
 import java.util.ArrayList;
@@ -74,6 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //클릭시 엑티비티 이동
                 Intent intent = new Intent(mContext , ItemActivity.class);
                 mContext.startActivity(intent);
+
             }
         });
     }
@@ -88,6 +88,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         //public ImageView imageView;
+
+        public TextView summary;
+        public TextView bean;
+        ImageView search;
+        ToggleButton favBtn;
+        TextView likeCountTextView;
         public TextView address;
         public TextView phone;
         CardView Card;
@@ -97,9 +103,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             name = (TextView) itemView.findViewById(R.id.tv_name);
             //imageView = (ImageView) itemView.findViewById(R.id.imageView);
+
+            summary = (TextView) itemView.findViewById(R.id.tv_summary);
+            search = (ImageView) itemView.findViewById(R.id.bt_search);
+            bean = (TextView) itemView.findViewById(R.id.item_bean);
+            
+
+            favBtn=(ToggleButton) itemView.findViewById(R.id.favBtn);
+            likeCountTextView=(TextView) itemView.findViewById(R.id.likeCountTextView);
+
             address = (TextView) itemView.findViewById(R.id.tv_summary);
             phone = (TextView) itemView.findViewById(R.id.item_bean);
             Card = (CardView) itemView.findViewById(R.id.CardView_list);
+
         }
     }
 }
