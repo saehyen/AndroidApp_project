@@ -4,6 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +41,8 @@ public class ReviewShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_show);
 
+
+
         // 현재 접속한 사용자의 이메일 받아오기
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user != null ? user.getEmail() : null;
@@ -46,23 +50,21 @@ public class ReviewShowActivity extends AppCompatActivity {
         String nickname = email.substring(0,idx);
         // 현재 접속한 사용자의 uid 받아오기
         String uid = user != null ? user.getUid() : null;
+
+
         // 카페에 있는 정보 가져오기
         ref.child(nickname).child("review").addValueEventListener(new ValueEventListener() {
-            // 성공햇을 때
+            // 성공했을 때
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 reviewtext = String.valueOf(dataSnapshot.getValue());
-                Log.e("firebase",String.valueOf(dataSnapshot.getValue()));
-                System.out.println("print : " + reviewtext);
-                TextView review = (TextView) findViewById(R.id.ReviewTextShow);
+                TextView review = (TextView) findViewById(R.id.reviewTextView);
                 review.setText(reviewtext);
-
             }
 
             // 실패했을 떄
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
