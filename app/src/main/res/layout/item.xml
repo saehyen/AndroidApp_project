@@ -68,6 +68,25 @@
                     android:ellipsize="end"
                     android:singleLine="true"/>
 
+                <ToggleButton
+                    android:id="@+id/favBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:textOn=""
+                    android:textOff=""
+                    android:background="@drawable/ic_baseline_favorite_24"
+                    android:onClick="onCustomToggleClick" />
+                <TextView
+                    android:id="@+id/likeCountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    android:layout_marginStart="10dp"
+                    style="@style/TextAppearance.AppCompat.Body1" />
+
+
             </LinearLayout>
 
         </LinearLayout>

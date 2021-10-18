@@ -9,16 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.whatcaffe.ItemActivity;
-import com.example.whatcaffe.LogInActivity;
 import com.example.whatcaffe.MainActivity;
 import com.example.whatcaffe.R;
-import com.example.whatcaffe.SignUpActivity;
 import com.example.whatcaffe.databinding.ItemBinding;
 
 import java.util.ArrayList;
@@ -65,15 +64,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, term);
                 mContext.startActivity(intent);
+
             }
         });
-
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //클릭시 웹검색하게 하자.
-                Intent intent = new Intent(mContext , ItemActivity.class);
+                Intent intent = new Intent(mContext ,ItemActivity.class);
                 mContext.startActivity(intent);
+
             }
         });
     }
@@ -91,6 +91,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView summary;
         public TextView bean;
         ImageView search;
+        ToggleButton favBtn;
+        TextView likeCountTextView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -101,6 +103,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             search = (ImageView) itemView.findViewById(R.id.bt_search);
             bean = (TextView) itemView.findViewById(R.id.item_bean);
             search.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+
+            favBtn=(ToggleButton) itemView.findViewById(R.id.favBtn);
+            likeCountTextView=(TextView) itemView.findViewById(R.id.likeCountTextView);
         }
     }
 }
