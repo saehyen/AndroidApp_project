@@ -7,6 +7,18 @@
     android:orientation="vertical"
     tools:context=".ReviewShowActivity">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:fontFamily="@font/mediumvert"
+        android:text="Review Page"
+        android:textAlignment="gravity"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,7 +34,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -32,7 +47,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -42,7 +60,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -52,7 +73,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -62,7 +86,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -72,7 +99,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -82,7 +112,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -92,7 +125,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -102,7 +138,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -112,7 +151,10 @@
                 android:layout_height="750dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:textSize="40sp">
+                android:layout_marginTop="50dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="20sp">
 
             </TextView>
 
