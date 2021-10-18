@@ -219,6 +219,8 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 map.setMapCenterPoint(point, false);
             }
 
+
+
         }
 
     }
@@ -246,10 +248,11 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         return (rad * 180 / Math.PI);
     }
 
-    public void writeCafeInfo(String cafeId, String cafeName, String cafeAddress, String cafePhoneNum) {
-        CafeInfo cafeInfo = new CafeInfo(cafeId, cafeName, cafeAddress, cafePhoneNum);
-            databaseReference.child(cafeId).child("name").setValue(cafeName);
-            databaseReference.child(cafeId).child("address").setValue(cafeAddress);
-            databaseReference.child(cafeId).child("phoneNum").setValue(cafePhoneNum);
+    public void writeCafeInfo(String cafeName, String cafeAddress, String cafePhoneNum) {
+        CafeInfo cafeInfo = new CafeInfo(cafeName, cafeAddress, cafePhoneNum);
+        databaseReference.child(cafeName).setValue(cafeName);
+        databaseReference.child(cafeName).child("address").setValue(cafeAddress);
+        databaseReference.child(cafeName).child("phoneNum").setValue(cafePhoneNum);
+
     }
 }

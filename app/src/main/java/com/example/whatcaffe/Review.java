@@ -11,21 +11,24 @@ import java.util.Map;
 
 public class Review<mDBReference> {
     public String id;
-    public String name;
+    public String uid;
     public String review;
 
     public Review(){}
-
-    public Review(String id, String name, String review) {
+    public Review(String uid, String review) {
+        this.uid = uid;
+        this.review = review;
+    }
+    public Review(String uid, String name, String review) {
         this.id = id;
-        this.name = name;
+        this.uid = uid;
         this.review = review;
     }
     public Map<String, Object> toMap(){
         HashMap <String,Object> result = new HashMap<>();
         result.put("id", id);
         result.put("review",review );
-        result.put("name", name);
+        result.put("uid", uid);
 
         return result;
     }

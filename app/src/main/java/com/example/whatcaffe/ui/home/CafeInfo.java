@@ -7,20 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @IgnoreExtraProperties
 public class CafeInfo<mDBReference> {
-    String cafeId;
     String cafeName;
     String cafeAddress;
     String cafePhoneNum;
 
-    public String getCafeId() {
-        return cafeId;
-    }
-
-    public void setCafeId(String cafeId) {
-        this.cafeId = cafeId;
-    }
 
     public String getCafeName() {
         return cafeName;
@@ -48,17 +41,24 @@ public class CafeInfo<mDBReference> {
 
     public CafeInfo() {}
 
-    public CafeInfo(String cafeId, String cafeName, String cafeAddress, String cafePhoneNum) {
-        this.cafeId = cafeId;
+    public CafeInfo(String cafeName, String cafeAddress, String cafePhoneNum) {
         this.cafeName = cafeName;
         this.cafeAddress = cafeAddress;
         this.cafePhoneNum = cafePhoneNum;
     }
 
+    @Override
+    public String toString() {
+        return "CafeInfo{" +
+                "cafeName='" + cafeName + '\'' +
+                ", cafeAddress='" + cafeAddress + '\'' +
+                ", cafePhoneNum='" + cafePhoneNum + '\'' +
+                '}';
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("id", cafeId);
         result.put("name", cafeName);
         result.put("address", cafeAddress);
         result.put("phoneNum", cafePhoneNum);
