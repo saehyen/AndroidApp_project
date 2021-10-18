@@ -218,7 +218,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 map.selectPOIItem(item, true);
                 map.setMapCenterPoint(point, false);
             }
-            writeCafeInfo(place.id, place.place_name, place.address_name, place.phone);
 
         }
 
