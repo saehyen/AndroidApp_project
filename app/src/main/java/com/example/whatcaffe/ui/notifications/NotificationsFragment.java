@@ -11,10 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.BookmarkActivity;
+import com.example.whatcaffe.Item2Activity;
 import com.example.whatcaffe.LogInActivity;
 import com.example.whatcaffe.NotificationActivity;
 import com.example.whatcaffe.R;
-import com.example.whatcaffe.ReviewActivity;
+import com.example.whatcaffe.ReviewShowActivity;
 import com.example.whatcaffe.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
@@ -40,7 +41,8 @@ public class NotificationsFragment extends Fragment {
         root.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                // 테스트용
+                Intent intent = new Intent(getActivity(), ReviewShowActivity.class);
                 startActivity(intent);
             }
         });

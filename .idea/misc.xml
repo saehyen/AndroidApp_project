@@ -19,6 +19,25 @@
         <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/Beansmap2/app/src/main/res/layout/activity_item2.xml" value="0.5321557971014492" />
         <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/Beansmap2/app/src/main/res/layout/activity_main.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/Beansmap2/app/src/main/res/layout/fragment_notifications.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/drawable-xxxhdpi/btn_star.xml" value="0.5703125" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.5703125" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.5703125" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.5703125" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/drawable/toggle_selector.xml" value="0.5703125" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_bookmark.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_item2.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_login.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_notification.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_review.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/activity_signup.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/content_item.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/fragment_dashboard.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/fragment_first.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/fragment_notifications.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/fragment_second.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/layout/item.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/HUSTAR10/AndroidStudioProjects/beansmap3/app/src/main/res/menu/bottom_nav_menu.xml" value="0.121875" />
         <entry key="..\:/Users/HUSTAR11/AndroidStudioProjects/AndroidApp_project/app/src/main/res/drawable/round_button.xml" value="0.13489583333333333" />
         <entry key="..\:/Users/HUSTAR11/AndroidStudioProjects/AndroidApp_project/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/HUSTAR11/AndroidStudioProjects/AndroidApp_project/app/src/main/res/layout/content_item.xml" value="0.24947916666666667" />
@@ -43,29 +62,18 @@
         <entry key="..\:/Users/HUSTAR12/App2/app/src/main/res/layout/fragment_home.xml" value="0.3265625" />
         <entry key="..\:/Users/HUSTAR12/App2/app/src/main/res/layout/fragment_notifications.xml" value="0.3265625" />
         <entry key="..\:/Users/HUSTAR12/App2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.34427083333333336" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.34427083333333336" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.34427083333333336" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.34427083333333336" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable/round_button.xml" value="0.34427083333333336" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/drawable/round_button2.xml" value="0.34427083333333336" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/font/font_style_xml.xml" value="0.5753846153846154" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.21318607764390896" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout-w936dp/activity_login.xml" value="0.248828125" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_bookmark.xml" value="0.3854166666666667" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_item2.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_login.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_main.xml" value="0.2695035460992908" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_notification.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/activity_review.xml" value="0.18007662835249041" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/content_item.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/fragment_dashboard.xml" value="0.2953125" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/fragment_first2.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/fragment_home.xml" value="0.2953125" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/fragment_second.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/item.xml" value="0.2695035460992908" />
         <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/login.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/HUSTAR12/Beensmap/app/src/main/res/layout/write_review.xml" value="0.3854166666666667" />
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.346875" />
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.4083333333333333" />
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.4083333333333333" />
@@ -76,6 +84,22 @@
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/layout/fragment_home.xml" value="0.3921875" />
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/layout/fragment_notifications.xml" value="0.14427083333333332" />
         <entry key="..\:/Users/HUSTAR12/StudioProjects/AndroidApp_project/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3921875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_bookmark.xml" value="0.1296875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_item2.xml" value="0.47327502429543244" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_login.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_main.xml" value="0.1296875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_notification.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_review.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/activity_signup.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/balloon_layout.xml" value="0.6" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/content_item.xml" value="0.134375" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/custom_callout_balloon.xml" value="0.536" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/fragment_dashboard.xml" value="0.3359375" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/fragment_first.xml" value="0.134375" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/fragment_home.xml" value="0.1296875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/fragment_notifications.xml" value="0.1296875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/fragment_second.xml" value="0.1296875" />
+        <entry key="..\:/Users/cow17/StudioProjects/AndroidApp_project_2/app/src/main/res/layout/item.xml" value="0.536" />
       </map>
     </option>
   </component>
