@@ -49,23 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(mPersons.get(position).name);
         holder.address.setText(mPersons.get(position).address);
         holder.phone.setText(mPersons.get(position).phone);
-//        Glide.with(mContext)
-//                .load(url)
-//                .centerCrop()
-//                .crossFade()
-//                .into(holder.imageView);
-
-//        클릭하면 웹검색하게 하자.
-//        holder.search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //클릭시 웹검색하게 하자.
-//                String term = mPersons.get(position).name;
-//                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-//                intent.putExtra(SearchManager.QUERY, term);
-//                mContext.startActivity(intent);
-//            }
-//        });
 
         holder.Card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +98,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             address = (TextView) itemView.findViewById(R.id.tv_summary);
             phone = (TextView) itemView.findViewById(R.id.item_bean);
             Card = (CardView) itemView.findViewById(R.id.CardView_list);
-
         }
     }
 }

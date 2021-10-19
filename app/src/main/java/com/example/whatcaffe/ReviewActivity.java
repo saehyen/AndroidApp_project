@@ -2,6 +2,7 @@ package com.example.whatcaffe;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,7 +29,7 @@ import java.util.Map;
 public class ReviewActivity extends AppCompatActivity {
     private Button buttonReview;
     private EditText reviewText;
-
+    private ArrayList<Review> arrayList = new ArrayList<>();
 
 
     @Override
@@ -38,8 +39,7 @@ public class ReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_review);
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("Reviews");
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user != null ? user.getEmail(): null;
         String uid = user != null ? user.getUid(): null;
@@ -48,19 +48,36 @@ public class ReviewActivity extends AppCompatActivity {
 
         int idx = email.indexOf("@");
         String nickname = email.substring(0,idx);
-        String tmepCafename = "카페이름";
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("Reviews/"+nickname);
+
+        String tmepCafename = "매스커피 신서혁신점";
         reviewText = (EditText) findViewById(R.id.ReviewText);
         buttonReview = (Button) findViewById(R.id.Reviewbutton);
         // 객체 생성
         Map<String, Review> reviews = new HashMap<>();
+        database.getReference().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Review review = snapshot.getValue(Review.class);
+                    arrayList.add(review);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         buttonReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // SignUpActivity 연결
                 //myRef.setValue(reviewText.getText().toString());
                 // 객체에 정보넣기
-                reviews.put(nickname,new Review(uid,tmepCafename+" "+reviewText.getText().toString()));
+                reviews.put(tmepCafename,new Review(uid,nickname,reviewText.getText().toString(),tmepCafename));
                 // 데이터베이스에 넣기
                 ref.setValue(reviews);
 

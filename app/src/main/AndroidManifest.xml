@@ -18,6 +18,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ReviewShowActivity"
+            android:label="작성한 리뷰"
             android:exported="true" />
         <activity
             android:name=".BookmarkActivity"
