@@ -30,9 +30,6 @@ public class BookmarkActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-        likeCountTextView = (TextView) findViewById(R.id.likeCountTextView);
-
-        favBtn = (ToggleButton) findViewById(R.id.favBtn);
         favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

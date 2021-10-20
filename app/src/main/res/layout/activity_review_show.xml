@@ -29,12 +29,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/reviewTextView"
+                android:id="@+id/reviewTextView_"
                 android:layout_width="match_parent"
-                android:layout_height="750dp"
+                android:layout_height="50dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:layout_marginTop="50dip"
+                android:layout_marginTop="5dip"
                 android:layout_marginLeft="25dip"
                 android:layout_marginRight="25dip"
                 android:textSize="20sp">
@@ -42,14 +42,16 @@
             </TextView>
 
             <TextView
-                android:id="@+id/reviewTextView3"
+                android:id="@+id/reviewTextView"
                 android:layout_width="match_parent"
-                android:layout_height="750dp"
+                android:layout_height="700dp"
                 android:background="#e0e0e0"
                 android:text="리뷰를 작성한 곳입니다."
-                android:layout_marginTop="50dip"
+
+                android:layout_marginTop="5dip"
                 android:layout_marginLeft="25dip"
                 android:layout_marginRight="25dip"
+
                 android:textSize="20sp">
 
             </TextView>
