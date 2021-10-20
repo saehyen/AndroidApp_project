@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dip"
         android:background="@drawable/button"
-        android:text="로그아웃                                                                     >"
+
+        android:text="로그아웃                                                                                   >"
+
         android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="16sp" />
@@ -34,17 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="리뷰                                                                           >"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="즐겨찾기                                                                     >"
+        android:text="내가 쓴 리뷰"
+
         android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="16sp" />
@@ -56,10 +50,9 @@
         android:layout_centerInParent="true"
         android:background="@drawable/button"
         android:onClick="onClick"
-        android:text="공지사항                                                                     >"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+
+        android:text="공지사항                                                                                   >"
+
 
 
 </LinearLayout>

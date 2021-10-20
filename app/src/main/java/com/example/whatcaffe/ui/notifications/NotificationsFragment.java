@@ -48,18 +48,12 @@ public class NotificationsFragment extends Fragment {
             }
         });
 
-        root.findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BookmarkActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         root.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                Intent intent = new Intent(getActivity(), NotificationActivity.class);
                 startActivity(intent);
             }
         });

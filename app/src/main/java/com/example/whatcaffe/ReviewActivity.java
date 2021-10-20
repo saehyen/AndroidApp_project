@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.whatcaffe.ui.home.CafeInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -66,6 +65,7 @@ public class ReviewActivity extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -85,7 +85,9 @@ public class ReviewActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"리뷰 작성이 완료되었습니다. ",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
                 startActivity(intent);
+
             }
         });
+
     }
 }

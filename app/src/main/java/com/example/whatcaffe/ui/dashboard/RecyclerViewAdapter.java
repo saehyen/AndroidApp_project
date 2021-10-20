@@ -50,11 +50,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.address.setText(mPersons.get(position).address);
         holder.phone.setText(mPersons.get(position).phone);
 
+
         holder.Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //클릭시 엑티비티 이동
                 Intent intent = new Intent(mContext , ItemActivity.class);
+                intent.putExtra("number", position);
+                intent.putExtra("cafeName", mPersons.get(position).getName());
                 mContext.startActivity(intent);
 
             }
@@ -70,13 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //ViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        //public ImageView imageView;
-
-        public TextView summary;
+        public ImageView image;
         public TextView bean;
-        ImageView search;
-        ToggleButton favBtn;
-        TextView likeCountTextView;
         public TextView address;
         public TextView phone;
         CardView Card;
@@ -84,20 +82,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(View itemView) {
             super(itemView);
 
+            image = (ImageView) itemView.findViewById(R.id.cafeImage);
             name = (TextView) itemView.findViewById(R.id.tv_name);
-            //imageView = (ImageView) itemView.findViewById(R.id.imageView);
-
-            summary = (TextView) itemView.findViewById(R.id.tv_summary);
-            search = (ImageView) itemView.findViewById(R.id.bt_search);
             bean = (TextView) itemView.findViewById(R.id.item_bean);
-            
-
-            favBtn=(ToggleButton) itemView.findViewById(R.id.favBtn);
-            likeCountTextView=(TextView) itemView.findViewById(R.id.likeCountTextView);
-
             address = (TextView) itemView.findViewById(R.id.tv_summary);
             phone = (TextView) itemView.findViewById(R.id.item_bean);
             Card = (CardView) itemView.findViewById(R.id.CardView_list);
+
         }
     }
+
+    public interface mClickListener {
+        public void mClick(View v, int position);
+    }
 }
+
