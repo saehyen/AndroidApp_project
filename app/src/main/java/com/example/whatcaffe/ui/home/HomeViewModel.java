@@ -25,7 +25,7 @@ public class HomeViewModel extends ViewModel {
 
 
     private final static String SEARCH_KEYWORD = "대구 신서동 커피";
-    private final static String API_KEY = "KakaoAK 341a477e04a5b89dcdb54cdc2bfc7c47";
+    private final static String API_KEY = "";
     private final static String LOG_TAG = "Kakao Map App";
     public HomeViewModel() {
         mText = new MutableLiveData<>();
