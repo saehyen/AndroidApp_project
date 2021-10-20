@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import com.example.whatcaffe.ui.home.CafeInfo;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 

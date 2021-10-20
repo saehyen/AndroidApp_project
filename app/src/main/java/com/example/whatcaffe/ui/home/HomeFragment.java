@@ -7,27 +7,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.whatcaffe.R;
 import com.example.whatcaffe.databinding.FragmentHomeBinding;
+import net.daum.mf.map.api.CalloutBalloonAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
-
+import android.view.MenuItem;
+import net.daum.mf.map.api.CalloutBalloonAdapter;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 
 public class HomeFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
@@ -39,8 +52,27 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private ViewGroup mapViewContainer = null;
     private GpsTracker gpsTracker;
     private HomeViewModel homeViewModel;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference();
+    String[] cafeBeans = new String[15];
+    Double[] cafeX = new Double[15];
+    Double[] cafeY = new Double[15];
+
+    class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
+        private final View mCalloutBalloon;
+        public CustomCalloutBalloonAdapter() {
+            mCalloutBalloon = getLayoutInflater().inflate(R.layout.custom_callout_balloon, null);
+        }
+
+        @Override
+        public View getCalloutBalloon(MapPOIItem poiItem) {
+            ((TextView) mCalloutBalloon.findViewById(R.id.title)).setText(poiItem.getItemName());
+            return mCalloutBalloon;
+        }
+
+        @Override
+        public View getPressedCalloutBalloon(MapPOIItem poiItem) {
+            return null;
+        }
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -53,7 +85,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         MapPOIItem markerCurrentLocation = new MapPOIItem();
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
 
 
 
@@ -72,16 +103,15 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
             }
         });
 
+
+
         Button setCurrentLocationButton = root.findViewById(R.id.location_button);
 
         setCurrentLocationButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
-
-                mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
-
                 MapPoint mapPointCurrentLocation = MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                mapView.setMapCenterPoint(mapPointCurrentLocation, true);
                 markerCurrentLocation.setItemName("현재 위치");
                 markerCurrentLocation.setTag(0);
                 markerCurrentLocation.setMapPoint(mapPointCurrentLocation);
@@ -103,7 +133,6 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
         beansButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (buttonIndex == 0) {
                     acidicBeansButton.setVisibility(View.VISIBLE);
                     mediumBeansButton.setVisibility(View.VISIBLE);
@@ -121,16 +150,125 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
                 }
             }
         });
-
-
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(gpsTracker.getLatitude(), gpsTracker.getLongitude()), true);
+        mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
+
+        acidicBeansButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    mapView.removeAllPOIItems();
+                    for (int i = 0; i < cafeBeans.length; i++) {
+                        if (!cafeBeans[i].contains("신맛")) {
+                            continue;
+                        }
+                        MapPOIItem item = new MapPOIItem();
+
+                        String[] strArr = cafeBeans[i].split("\\+");
+                        item.setItemName(strArr[0]);
+
+                        MapPoint pointCafe = MapPoint.mapPointWithGeoCoord(cafeY[i], cafeX[i]);
+
+                        item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                        item.setCustomImageResourceId(R.drawable.acidicmarker);
+                        item.setMapPoint(pointCafe);
+                        mapView.addPOIItem(item);
+                    }
+            }
+        });
+
+        mediumBeansButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mapView.removeAllPOIItems();
+                for (int i = 0; i < cafeBeans.length; i++) {
+                    if (!cafeBeans[i].contains("중간맛")) {
+                        continue;
+                    }
+                    MapPOIItem item = new MapPOIItem();
+
+                    String[] strArr = cafeBeans[i].split("\\+");
+                    item.setItemName(strArr[0]);
+
+                    MapPoint pointCafe = MapPoint.mapPointWithGeoCoord(cafeY[i], cafeX[i]);
+
+                    item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                    item.setCustomImageResourceId(R.drawable.mediummarker);
+                    item.setMapPoint(pointCafe);
+                    mapView.addPOIItem(item);
+                }
+            }
+        });
+
+        smokyBeansButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mapView.removeAllPOIItems();
+                for (int i = 0; i < cafeBeans.length; i++) {
+                    if (!cafeBeans[i].contains("탄맛")) {
+                        continue;
+                    }
+                    MapPOIItem item = new MapPOIItem();
+
+                    String[] strArr = cafeBeans[i].split("\\+");
+                    item.setItemName(strArr[0]);
+
+                    MapPoint pointCafe = MapPoint.mapPointWithGeoCoord(cafeY[i], cafeX[i]);
+
+                    item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                    item.setCustomImageResourceId(R.drawable.smokymarker);
+                    item.setMapPoint(pointCafe);
+                    mapView.addPOIItem(item);
+                }
+            }
+        });
+
+        decafButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mapView.removeAllPOIItems();
+                for (int i = 0; i < cafeBeans.length; i++) {
+                    if (!cafeBeans[i].contains("디카페인")) {
+                        continue;
+                    }
+                    MapPOIItem item = new MapPOIItem();
+
+                    String[] strArr = cafeBeans[i].split("\\+");
+                    item.setItemName(strArr[0]);
+
+                    MapPoint pointCafe = MapPoint.mapPointWithGeoCoord(cafeY[i], cafeX[i]);
+
+                    item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                    item.setCustomImageResourceId(R.drawable.decafmarker);
+                    item.setMapPoint(pointCafe);
+                    mapView.addPOIItem(item);
+                }
+            }
+        });
+
+        resetButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mapView.removeAllPOIItems();
+                for (int i = 0; i < cafeBeans.length; i++) {
+
+                    MapPOIItem item = new MapPOIItem();
+
+                    String[] strArr = cafeBeans[i].split("\\+");
+                    item.setItemName(strArr[0]);
+
+                    MapPoint pointCafe = MapPoint.mapPointWithGeoCoord(cafeY[i], cafeX[i]);
+
+                    item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
+                    item.setCustomImageResourceId(R.drawable.caffeemarker);
+                    item.setMapPoint(pointCafe);
+                    mapView.addPOIItem(item);
+                }
+            }
+        });
+
 
         return root;
     }
-
-
-
-
 
     @Override
     public void onCurrentLocationUpdate(MapView mapView, MapPoint mapPoint, float v) {
@@ -201,26 +339,21 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     }
 
     private void createPlaceMarker(MapView map, List<Place> places) {
+        String[] count = {"탄맛 디카페인", "중간맛 신맛 디카페인", "신맛 디카페인", "신맛", "탄맛 디카페인", "중간맛", "중간맛", "탄맛 디카페인", "탄맛 디카페인", "탄맛", "신맛", "탄맛", "탄맛", "중간맛", "탄맛"};
         for (int i = 0; i < places.size(); i++) {
             Place place = places.get(i);
             MapPOIItem item = new MapPOIItem();
+            String distance = String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x)));
             MapPoint point = MapPoint.mapPointWithGeoCoord(Double.parseDouble(place.y), Double.parseDouble(place.x));
-
-            item.setItemName(place.place_name + "\n 거리: " +
-                    String.format("%.3f", getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), Double.parseDouble(place.y), Double.parseDouble(place.x))) + "km");
+            item.setItemName(place.place_name + "\n거리: " + distance + "km \n" + "원두: " + count[i]);
             item.setTag(0);
             item.setMapPoint(point);
             item.setMarkerType(MapPOIItem.MarkerType.CustomImage);
             item.setCustomImageResourceId(R.drawable.caffeemarker);
-
             map.addPOIItem(item);
-            if (i == 0) {
-                map.selectPOIItem(item, true);
-                map.setMapCenterPoint(point, false);
-            }
-
-
-
+            cafeBeans[i] = item.getItemName();
+            cafeX[i] = Double.parseDouble(place.x);
+            cafeY[i] = Double.parseDouble(place.y);
         }
 
     }
@@ -247,12 +380,5 @@ public class HomeFragment extends Fragment implements MapView.CurrentLocationEve
     private static double rad2deg(double rad) {
         return (rad * 180 / Math.PI);
     }
-
-    public void writeCafeInfo(String cafeName, String cafeAddress, String cafePhoneNum) {
-        CafeInfo cafeInfo = new CafeInfo(cafeName, cafeAddress, cafePhoneNum);
-        databaseReference.child(cafeName).setValue(cafeName);
-        databaseReference.child(cafeName).child("address").setValue(cafeAddress);
-        databaseReference.child(cafeName).child("phoneNum").setValue(cafePhoneNum);
-
-    }
 }
+
