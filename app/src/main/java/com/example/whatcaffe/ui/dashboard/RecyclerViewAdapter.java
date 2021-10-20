@@ -49,7 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(mPersons.get(position).name);
         holder.address.setText(mPersons.get(position).address);
         holder.phone.setText(mPersons.get(position).phone);
-        holder.image.setImageResource(mPersons.get(position).image);
+
 
         holder.Card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +88,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             address = (TextView) itemView.findViewById(R.id.tv_summary);
             phone = (TextView) itemView.findViewById(R.id.item_bean);
             Card = (CardView) itemView.findViewById(R.id.CardView_list);
-
 
         }
     }

@@ -65,8 +65,26 @@ public class ReviewActivity extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        buttonReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // SignUpActivity 연결
+                //myRef.setValue(reviewText.getText().toString());
+                // 객체에 정보넣기
+                reviews.put(tmepCafename,new Review(uid,nickname,reviewText.getText().toString(),tmepCafename));
+                // 데이터베이스에 넣기
+                ref.setValue(reviews);
+
+                // 알림말 및 화면이동
+                Toast.makeText(getApplicationContext(),"리뷰 작성이 완료되었습니다. ",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
         });
